@@ -1,0 +1,26 @@
+function  
+    protData = readtable('protEnc.dat');
+    tau = 0.5;
+
+    %[aligned,score] = ProtAlign(seq1, seq2, 0.5, 0)
+    numProtiens = height(protData(:,1));
+    numComb = nchoosek(numProtiens,2);
+    scores = zeros(numComb, 3);
+    n = 1;
+    h = waitbar(0, 'Processing computations...');
+    for i=1:numProtiens
+       for j=(i+1):numProtiens
+           seq1 = split(protData{i,2}, ', ');
+           seq2 = split(protData{j,2}, ', ');
+           seq1(end) = [];
+           seq2(end) = [];
+           scores(n,1) = i;
+           scores(n,2) = j;
+           [aligned,scores(n,3)] = ProtAlign(seq1, seq2, tau, 0);
+           waitbar(n/numComb, h,sprintf('Combination %d of %d done\n', n, numComb))
+           n = n+1;
+       end
+    end
+
+    close(h);
+    save('protienScores','scores');
