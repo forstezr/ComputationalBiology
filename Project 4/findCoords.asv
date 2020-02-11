@@ -1,0 +1,26 @@
+
+data = load('data.mat');
+sequence = data.sequences{5};
+
+[block1, foldSep, block2, blockTypes, block1IDs, block2IDs] = foldProtein(sequence)
+%block1 = cell array of string blocks
+%block2 = ^
+%foldSep = number of 0's in zero separator being folded around
+%blockTypes = x and y block order (which is B prime and B d prime)
+%block1IDs = y, x, z block labels 1 = y, 0 = x, 2 = z
+%block2IDs = ^
+
+%insert Carlyn's code here
+block1f = flip(block1);
+for i = 1:length(block1)
+    block1f = flip(block1f{i});
+end
+cords1 = findFace(block1f, blockTypes(1), flip(block1IDs)); %block is reversed
+
+cords2 = findFace(block2, blockTypes(2), block2IDs); %this can be input as is.
+
+
+%insert Nick's code here
+%DispProt(cords, sequence)
+%do topological pairs here
+
