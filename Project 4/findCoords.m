@@ -3,6 +3,7 @@ data = load('data.mat');
 
 for k = 1:length(data.sequences)
     sequence = data.sequences{k};
+    %sequence = round(rand(1,200));
 
     [block1, foldSep, block2, blockTypes, block1IDs, block2IDs] = foldProtein(sequence);
     %block1 = cell array of string blocks

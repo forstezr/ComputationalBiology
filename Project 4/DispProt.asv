@@ -1,7 +1,6 @@
 function DispProt(coords,vals)
     pairs = findPairs(coords, vals);
     figure
-    set(gca, 'visible', 'off');
     %set the upper and lower bounds of the axes (can be manually changed)
     xlim([-6,6]);
     ylim([-6,max(coords{1}(2)+1, coords{end}(2)+1)]);
@@ -36,9 +35,9 @@ function DispProt(coords,vals)
             plot([pairs{k}(1),pairs{k+1}(1)],[pairs{k}(2),pairs{k+1}(2)],'Color','green','LineWidth',5);
             %plot([-1,12],[0,12],'Color','green','LineWidth',5);
             numPairs = numPairs + 1;
+            title('');
             pause(0.1)
         end
-        numPairs
     end
 end
 

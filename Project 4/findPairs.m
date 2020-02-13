@@ -16,8 +16,8 @@ function [pairs] = findPairs(cords, vals)
         end
     end
     
-    for k = 1:2:length(pairs)
-        fprintf('[%d,%d]<-->[%d,%d]\n',pairs{k}(1),pairs{k}(2),pairs{k+1}(1),pairs{k+1}(2))
-    end
+%     for k = 1:2:length(pairs)
+%         fprintf('[%d,%d]<-->[%d,%d]\n',pairs{k}(1),pairs{k}(2),pairs{k+1}(1),pairs{k+1}(2))
+%     end
 
 end
